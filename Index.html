@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code Canvas – Visual HTML CSS Builder</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- TOP NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-logo">
+      <div class="logo-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <rect x="2" y="2" width="7" height="7" rx="1.5" fill="#a78bfa"/>
+          <rect x="11" y="2" width="7" height="7" rx="1.5" fill="#7c3aed" opacity="0.7"/>
+          <rect x="2" y="11" width="7" height="7" rx="1.5" fill="#7c3aed" opacity="0.7"/>
+          <rect x="11" y="11" width="7" height="7" rx="1.5" fill="#a78bfa"/>
+        </svg>
+      </div>
+      <span class="logo-text">Code Canvas</span>
+    </div>
+    <div class="navbar-actions">
+      <button class="btn-ghost" id="btn-grid-snap" title="Toggle grid snap">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle cx="3" cy="3" r="1.2" fill="currentColor"/>
+          <circle cx="8" cy="3" r="1.2" fill="currentColor"/>
+          <circle cx="13" cy="3" r="1.2" fill="currentColor"/>
+          <circle cx="3" cy="8" r="1.2" fill="currentColor"/>
+          <circle cx="8" cy="8" r="1.2" fill="currentColor"/>
+          <circle cx="13" cy="8" r="1.2" fill="currentColor"/>
+          <circle cx="3" cy="13" r="1.2" fill="currentColor"/>
+          <circle cx="8" cy="13" r="1.2" fill="currentColor"/>
+          <circle cx="13" cy="13" r="1.2" fill="currentColor"/>
+        </svg>
+        <span id="grid-snap-label">Grid Snap Off</span>
+      </button>
+      <button class="btn-ghost" id="btn-view-code">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <polyline points="5,4 1,8 5,12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <polyline points="11,4 15,8 11,12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="9.5" y1="2" x2="6.5" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        View Code
+      </button>
+      <button class="btn-primary" id="btn-clear">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M1 1L13 13M13 1L1 13" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        Clear Canvas
+      </button>
+    </div>
+  </nav>
+
+  <!-- MAIN LAYOUT -->
+  <div class="app-body">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar-left">
+      <div class="sidebar-section-label">ELEMENTS</div>
+
+      <div class="sidebar-group">
+        <div class="sidebar-category">TEXT</div>
+        <div class="element-item" data-type="h1">
+          <span class="el-icon">H₁</span> Heading 1
+        </div>
+        <div class="element-item" data-type="h2">
+          <span class="el-icon">H₂</span> Heading 2
+        </div>
+        <div class="element-item" data-type="h3">
+          <span class="el-icon">H₃</span> Heading 3
+        </div>
+        <div class="element-item" data-type="h4">
+          <span class="el-icon">T</span> Heading 4
+        </div>
+        <div class="element-item" data-type="h5">
+          <span class="el-icon">T</span> Heading 5
+        </div>
+        <div class="element-item" data-type="h6">
+          <span class="el-icon">T</span> Heading 6
+        </div>
+        <div class="element-item" data-type="p">
+          <span class="el-icon">¶</span> Paragraph
+        </div>
+      </div>
+
+      <div class="sidebar-divider"></div>
+
+      <div class="sidebar-group">
+        <div class="sidebar-category">MEDIA</div>
+        <div class="element-item" data-type="img">
+          <span class="el-icon">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <rect x="1" y="1" width="12" height="12" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+              <circle cx="4.5" cy="4.5" r="1.2" fill="currentColor"/>
+              <polyline points="1,10 5,6 8,9 10,7 13,10" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+            </svg>
+          </span> Image
+        </div>
+      </div>
+
+      <div class="sidebar-divider"></div>
+
+      <div class="sidebar-group">
+        <div class="sidebar-category">INTERACTIVE</div>
+        <div class="element-item" data-type="button">
+          <span class="el-icon">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2 4.5L7 2L12 4.5V9.5L7 12L2 9.5V4.5Z" stroke="currentColor" stroke-width="1.2"/>
+            </svg>
+          </span> Button
+        </div>
+        <div class="element-item" data-type="a">
+          <span class="el-icon">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M5 9L9 5M6 4H4a2 2 0 000 4h1M8 10h2a2 2 0 000-4H9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </span> Link
+        </div>
+        <div class="element-item" data-type="input">
+          <span class="el-icon">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <rect x="1" y="4" width="12" height="6" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+              <line x1="3.5" y1="7" x2="5.5" y2="7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </span> Input
+        </div>
+        <div class="element-item" data-type="textarea">
+          <span class="el-icon">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <rect x="1" y="2" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+              <line x1="3.5" y1="5.5" x2="10.5" y2="5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              <line x1="3.5" y1="8" x2="8" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </span> Textarea
+        </div>
+      </div>
+
+      <div class="sidebar-divider"></div>
+
+      <div class="sidebar-group">
+        <div class="sidebar-category">LAYOUT</div>
+        <div class="element-item" data-type="div">
+          <span class="el-icon">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <rect x="1" y="1" width="12" height="12" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+            </svg>
+          </span> Container
+        </div>
+        <div class="element-item" data-type="ul">
+          <span class="el-icon">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <circle cx="2.5" cy="4" r="1" fill="currentColor"/>
+              <line x1="5" y1="4" x2="12" y2="4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              <circle cx="2.5" cy="7.5" r="1" fill="currentColor"/>
+              <line x1="5" y1="7.5" x2="12" y2="7.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              <circle cx="2.5" cy="11" r="1" fill="currentColor"/>
+              <line x1="5" y1="11" x2="12" y2="11" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </span> Unordered List
+        </div>
+        <div class="element-item" data-type="ol">
+          <span class="el-icon">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <text x="1" y="5" font-size="4" fill="currentColor">1.</text>
+              <line x1="5" y1="4" x2="12" y2="4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              <text x="1" y="8.5" font-size="4" fill="currentColor">2.</text>
+              <line x1="5" y1="7.5" x2="12" y2="7.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              <text x="1" y="12" font-size="4" fill="currentColor">3.</text>
+              <line x1="5" y1="11" x2="12" y2="11" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </span> Ordered List
+        </div>
+        <div class="element-item" data-type="table">
+          <span class="el-icon">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <rect x="1" y="1" width="12" height="12" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+              <line x1="1" y1="5" x2="13" y2="5" stroke="currentColor" stroke-width="1"/>
+              <line x1="1" y1="9" x2="13" y2="9" stroke="currentColor" stroke-width="1"/>
+              <line x1="5" y1="1" x2="5" y2="13" stroke="currentColor" stroke-width="1"/>
+              <line x1="9" y1="1" x2="9" y2="13" stroke="currentColor" stroke-width="1"/>
+            </svg>
+          </span> Table
+        </div>
+      </div>
+    </aside>
+
+    <!-- CENTER CANVAS -->
+    <main class="canvas-wrapper">
+      <div class="canvas" id="canvas">
+        <div class="canvas-empty-hint" id="canvas-hint">
+          <div class="hint-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <rect x="4" y="4" width="18" height="18" rx="3" fill="#a78bfa" opacity="0.3"/>
+              <rect x="26" y="4" width="18" height="18" rx="3" fill="#7c3aed" opacity="0.2"/>
+              <rect x="4" y="26" width="18" height="18" rx="3" fill="#7c3aed" opacity="0.2"/>
+              <rect x="26" y="26" width="18" height="18" rx="3" fill="#a78bfa" opacity="0.3"/>
+            </svg>
+          </div>
+          <p>Click any element on the left to add it to the canvas</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- RIGHT PROPERTIES PANEL -->
+    <aside class="sidebar-right" id="properties-panel">
+      <div class="properties-empty" id="properties-empty">
+        <div class="props-empty-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <circle cx="18" cy="18" r="14" stroke="#4b5563" stroke-width="1.5"/>
+            <line x1="12" y1="18" x2="24" y2="18" stroke="#4b5563" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="18" y1="12" x2="18" y2="24" stroke="#4b5563" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p>Select an element to edit properties</p>
+      </div>
+      <div class="properties-content" id="properties-content" style="display:none">
+        <div class="props-header">
+          <span class="props-title">PROPERTIES</span>
+          <span class="props-tag" id="props-tag">p</span>
+        </div>
+        <div class="props-body" id="props-body"></div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- CONTEXT MENU -->
+  <div class="context-menu" id="context-menu">
+    <div class="ctx-item" id="ctx-duplicate">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <rect x="3" y="3" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.2"/>
+        <rect x="1" y="1" width="8" height="8" rx="1" fill="#1a1a2e" stroke="currentColor" stroke-width="1.2"/>
+      </svg>
+      Duplicate
+    </div>
+    <div class="ctx-item ctx-danger" id="ctx-delete">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M2 4h10M5 4V2.5h4V4M5.5 6v5M8.5 6v5M3 4l.7 7.5a1 1 0 001 .5h4.6a1 1 0 001-.5L11 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Delete
+    </div>
+  </div>
+
+  <!-- CODE MODAL -->
+  <div class="modal-overlay" id="code-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <polyline points="5,4 1,9 5,14" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="13,4 17,9 13,14" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="11" y1="2" x2="7" y2="16" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Generated Code
+        </h2>
+        <button class="modal-close" id="modal-close">✕</button>
+      </div>
+      <div class="modal-tabs">
+        <button class="tab-btn active" data-tab="html">HTML</button>
+        <button class="tab-btn" data-tab="css">CSS</button>
+        <button class="tab-btn" data-tab="preview">Preview</button>
+      </div>
+      <div class="modal-body">
+        <div class="tab-content active" id="tab-html">
+          <div class="code-toolbar">
+            <span class="code-lang">index.html</span>
+            <button class="copy-btn" id="copy-html">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                <rect x="3.5" y="3.5" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.2"/>
+                <rect x="1" y="1" width="8" height="8" rx="1" fill="#1a1a2e" stroke="currentColor" stroke-width="1.2"/>
+              </svg>
+              Copy HTML
+            </button>
+          </div>
+          <pre class="code-block" id="html-output"></pre>
+        </div>
+        <div class="tab-content" id="tab-css">
+          <div class="code-toolbar">
+            <span class="code-lang">style.css</span>
+            <button class="copy-btn" id="copy-css">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                <rect x="3.5" y="3.5" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.2"/>
+                <rect x="1" y="1" width="8" height="8" rx="1" fill="#1a1a2e" stroke="currentColor" stroke-width="1.2"/>
+              </svg>
+              Copy CSS
+            </button>
+          </div>
+          <pre class="code-block" id="css-output"></pre>
+        </div>
+        <div class="tab-content" id="tab-preview">
+          <iframe id="preview-frame" sandbox="allow-scripts"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
